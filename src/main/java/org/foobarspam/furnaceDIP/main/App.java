@@ -22,14 +22,14 @@ public class App {
 		Heater heater = new GasHeater();
 		Thermometer thermometer = new RemoteCommandSensor();
 
-		Regulable regulator = new Regulator();
+		Regulable regulator = new Regulator(minTemp, maxTemp);
 
 		System.out.println("Arrancando...");
-		regulator.regulate(thermometer, heater, minTemp, maxTemp, temperature);
+		regulator.regulate(thermometer, heater, temperature);
 
 		Jedi yoda = new Jedi();
 		System.out.println("\nArrancando a Yoda: ");
-		regulator.regulate(thermometer, yoda, minTemp, maxTemp, temperature);
+		regulator.regulate(thermometer, yoda, temperature);
 		yoda.speak();
 	}
 }

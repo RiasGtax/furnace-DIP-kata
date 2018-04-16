@@ -8,7 +8,15 @@ import org.foobarspam.furnaceDIP.types.RoomTemperature;
 
 public class Regulator implements Regulable {
 
-	public void regulate(Thermometer t, Heater h, double minTemp, double maxTemp, RoomTemperature temperature) {
+	private double minTemp;
+	private double maxTemp;
+
+	public Regulator(double minTemp, double maxTemp) {
+		this.minTemp = minTemp;
+		this.maxTemp = maxTemp;
+	}
+
+	public void regulate(Thermometer t, Heater h, RoomTemperature temperature) {
 		RegulatorDisplayCodes code;
 		while (t.read(temperature) < maxTemp) {
 			code = RegulatorDisplayCodes.HEATING;
@@ -34,6 +42,22 @@ public class Regulator implements Regulable {
 			System.out.println("Algo raro sucede...");
 			break;
 		}
+	}
+
+	public double getMinTemp() {
+		return minTemp;
+	}
+
+	public void setMinTemp(double minTemp) {
+		this.minTemp = minTemp;
+	}
+
+	public double getMaxTemp() {
+		return maxTemp;
+	}
+
+	public void setMaxTemp(double maxTemp) {
+		this.maxTemp = maxTemp;
 	}
 
 }
