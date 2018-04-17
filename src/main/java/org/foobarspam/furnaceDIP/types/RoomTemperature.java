@@ -1,23 +1,30 @@
 package org.foobarspam.furnaceDIP.types;
 
 public class RoomTemperature {
-	
-	private double temperature = 0;
-	
-	public RoomTemperature(double temperature){
-		this.temperature = temperature;
+
+	private static double temperature = 0;
+	private static RoomTemperature instance;
+
+	private RoomTemperature() {
+	}
+
+	public static RoomTemperature getInstance() {
+		if (instance == null) {
+			instance = new RoomTemperature();
+		}
+		return instance;
 	}
 
 	public double getTemperature() {
-		return this.temperature;
+		return temperature;
 	}
 
-	public void setTemperature(double temperature) {
-		this.temperature = temperature;
+	public void setTemperature(double input) {
+		temperature = input;
 	}
-	
-	public void incrementTemperature(double increment){
-		this.temperature += increment;
+
+	public static void incrementTemperature(double increment) {
+		temperature += increment;
 	}
 
 }
