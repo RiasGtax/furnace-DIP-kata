@@ -15,7 +15,9 @@ public class App {
 		final double maxTemp = 21.0;
 
 		RoomTemperature temperature = RoomTemperature.getInstance();
-		temperature.setTemperature(15);
+		temperature.setTemperature(20);
+		RoomTemperature temperatureA = RoomTemperature.getInstance();
+		System.out.println(temperatureA.getTemperature());
 		Heater heater = new GasHeater();
 		Thermometer thermometer = new RemoteCommandSensor();
 
